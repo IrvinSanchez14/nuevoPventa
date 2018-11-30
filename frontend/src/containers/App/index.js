@@ -1,17 +1,29 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Box from '../../components/box';
 
-function Raiz() {
+export class Raiz extends React.Component {
+
+prueba = (e) => {
+  e.preventDefault();
+  window.location.href = "/"
+}
+
+render () {
   return (
     <Router>
       <div>
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/PEDIDOS">PEDIDOS</Link>
-          </li>
+          <Link to="/">
+            <Box
+              headTitle="Home"
+              text="HOME"
+            />
+          </Link>
+            <Box
+              headTitle="Pedidos"
+              text="PEDIDOS"
+            />
           <li>
             <Link to="/CAJA">CAJA</Link>
           </li>
@@ -40,7 +52,8 @@ function Raiz() {
         <Route path="/STAT"  />
       </div>
     </Router>
-  );
+    );
+  }
 }
 
 export default Raiz;
