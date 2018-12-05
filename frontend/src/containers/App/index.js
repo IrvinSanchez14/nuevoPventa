@@ -2,6 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Box from '../../components/box';
 
+const styles = {
+  link: {
+    textDecoration: 'none',
+  },
+}
+
 export class Raiz extends React.Component {
 
 prueba = (e) => {
@@ -9,51 +15,77 @@ prueba = (e) => {
   window.location.href = "/"
 }
 
+
 render () {
+  console.log('this.props',this.props);
   return (
     <Router>
       <div>
         <ul>
-          <Link to="/">
+          <Link to="/" style={styles.link}>
             <Box
               headTitle="Home"
               text="HOME"
             />
           </Link>
+          <Link to="/PEDIDOS" style={styles.link}>
             <Box
               headTitle="Pedidos"
               text="PEDIDOS"
             />
-          <li>
-            <Link to="/CAJA">CAJA</Link>
-          </li>
-          <li>
-            <Link to="/IMPRESION">IMPRESION</Link>
-          </li>
-          <li>
-            <Link to="/NODO">NODO</Link>
-          </li>
-          <li>
-            <Link to="/DESPACHO">DESPACHO</Link>
-          </li>
-          <li>
-            <Link to="/STAT">STAT</Link>
-          </li>
+          </Link>
+          <Link to="/CAJA" style={styles.link}>
+            <Box
+              headTitle="Caja"
+              text="CAJA"
+            />
+          </Link>
+          <Link to="/IMPRESION" style={styles.link}>
+            <Box
+              headTitle="Impresion"
+              text="IMPRESION"
+            />
+          </Link>
+          <Link to="/NODO" style={styles.link}>
+            <Box
+              headTitle="Nodo"
+              text="NODO"
+            />
+          </Link>
+          <Link to="/DESPACHO" style={styles.link}>
+            <Box
+              headTitle="Despacho"
+              text="DESPACHO"
+            />
+          </Link>
+          <Link to="/STAT" style={styles.link}>
+            <Box
+              headTitle="Stat"
+              text="STAT"
+            />
+          </Link>
         </ul>
 
         <hr />
-
-        <Route exact path="/"  />
-        <Route path="/PEDIDOS"  />
-        <Route path="/CAJA"  />
-        <Route exact path="/IMPRESION"  />
-        <Route path="/NODO"  />
-        <Route path="/DESPACHO"  />
-        <Route path="/STAT"  />
+          <Route path="/"  />
+          <Route path="/PEDIDOS" component={Gallery} />
+          <Route path="/CAJA"  />
+          <Route exact path="/IMPRESION"  />
+          <Route path="/NODO"  />
+          <Route path="/DESPACHO"  />
+          <Route path="/STAT"  />
       </div>
     </Router>
     );
   }
+}
+
+function Gallery() {
+  return (
+    <div>
+      <span>hola</span>
+    </div>
+  );
 }
 
 export default Raiz;

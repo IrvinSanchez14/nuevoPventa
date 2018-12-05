@@ -7,12 +7,15 @@ const styles = {
     borderColor: '#ddd',
   },
   boxHead: {
-    color: '#333',
-    backgroundColor: '#f5f5f5',
+    textAlign: 'center',
     borderColor: '#ddd',
+    ':hover': {
+      background: '#bdc3c7',
+    },
   },
   boxBody: {
-    padding: '15px',
+    fontSize: '2em',
+    textAlign: 'center',
   }
 }
 
@@ -23,20 +26,23 @@ export class Box extends React.Component {
       <div
         id="box-default"
         className="panel panel-default"
+        style={styles.boxDefault}
       >
         <div
           id="box-head"
           className="panel-heading"
+          style={styles.boxHead}
         >
           {this.props.headTitle}
-        </div>
         <div
           id="box-body"
           className="panel-body"
           onClick={this.props.onClick}
+          style={styles.boxBody}
         >
           {this.props.text}
         </div>
+       </div>
       </div>
     );
     return box;
