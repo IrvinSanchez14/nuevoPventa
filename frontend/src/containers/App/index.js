@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Box from '../../components/box';
 
 const styles = {
@@ -19,7 +19,6 @@ prueba = (e) => {
 render () {
   console.log('this.props',this.props);
   return (
-    <Router>
       <div>
         <ul>
           <Link to="/" style={styles.link}>
@@ -65,27 +64,9 @@ render () {
             />
           </Link>
         </ul>
-
-        <hr />
-          <Route path="/"  />
-          <Route path="/PEDIDOS" component={Gallery} />
-          <Route path="/CAJA"  />
-          <Route exact path="/IMPRESION"  />
-          <Route path="/NODO"  />
-          <Route path="/DESPACHO"  />
-          <Route path="/STAT"  />
       </div>
-    </Router>
     );
   }
-}
-
-function Gallery() {
-  return (
-    <div>
-      <span>hola</span>
-    </div>
-  );
 }
 
 export default Raiz;
