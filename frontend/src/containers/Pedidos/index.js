@@ -1,8 +1,12 @@
 import React from "react";
 import Radium from 'radium';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import SearchBox from '../../components/searchBox';
 import ProductBox from '../../components/ProductBox';
+
+import { getProducts } from './selectors';
 
 const styles = {
   head: {
@@ -24,21 +28,47 @@ export class Pedidos extends React.Component {
     console.log('menu');
   }
 
+  componentDidMount() {
+  }
+
   render(){
+
+    const product = this.props.getProducts;
+    const listProducto = product.map((name) => {
+      return (
+        <ProductBox
+        key={name.ID_producto}
+        style={styles.normalProduct} 
+        name={name.nombre}
+        price={`$${name.precio}`}
+      />
+      );
+    })
     return(
       <div style={styles.head}>
         <SearchBox />
         <div>
-          <ProductBox
-            onClick={this.selectAditional}
-            style={styles.normalProduct} 
-            name="Pizza Hawaianna"
-            price="$25.00"
-          />
+        {listProducto}
         </div>
       </div>
     );
   }
 }
 
-export default Radium(Pedidos);
+export function mapStateToProps(state, props) {
+  return {
+    getProducts: getProducts(state,props),
+  };
+}
+
+export const actions = {
+};
+
+Pedidos.propTypes = {
+}
+
+export default
+  connect(
+    mapStateToProps,
+    actions
+  )(Radium(Pedidos));

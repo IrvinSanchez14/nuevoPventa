@@ -1,0 +1,1 @@
+export const SELECT_PRODUCT_LISTS = 'Pedidos/SELECT_PRODUCT_LISTS';

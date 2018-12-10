@@ -1,6 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Radium from 'radium';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Box from '../../components/box';
+
+import {selectProductLists} from '../Pedidos/actions';
+
+import { readProduct } from '../../API';
+import axios from 'axios';
+
+const hostname = 'http://localhost/nuevoPventa/backend/';
 
 const styles = {
   link: {
@@ -17,7 +28,13 @@ prueba = (e) => {
 
 
 render () {
-  console.log('this.props',this.props);
+  const d = readProduct();
+  d.then(res => {
+    console.log(res.data.registro)
+  })
+  .catch(error => {
+    console.log(error)
+  });
   return (
       <div>
         <ul>
@@ -27,7 +44,7 @@ render () {
               text="HOME"
             />
           </Link>
-          <Link to="/PEDIDOS" style={styles.link}>
+          <Link to="/PEDIDOS" style={styles.link} onClick={this.props.selectProductLists}>
             <Box
               headTitle="Pedidos"
               text="PEDIDOS"
@@ -69,4 +86,19 @@ render () {
   }
 }
 
-export default Raiz;
+export const actions = {
+  selectProductLists
+};
+
+export function mapStateToProps(state, props) {
+}
+
+Raiz.propTypes = {
+  selectProductLists: PropTypes.func.isRequired,
+}
+
+export default
+  connect(
+    mapStateToProps,
+    actions
+  )(Radium(Raiz));

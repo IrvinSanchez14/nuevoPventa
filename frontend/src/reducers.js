@@ -1,15 +1,6 @@
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from "redux";
+import productLists from './containers/Pedidos/reducer';
 
-const appReducer = combineReducers({
+export default combineReducers({
+  productLists
 });
-
-const rootReducer = (state, action) => {
-  let newState = state;
-  /*if (action.type === LOGOUT) {
-    newState = undefined;
-  }*/
-
-  return appReducer(newState, action);
-};
-
-export default rootReducer;
