@@ -10,7 +10,7 @@ export const getProducts = createSelector(
     if (listProduct) {
       const lista = [];
       const productoLista = listProduct.toJS();
-      productoLista.selectProductList.productoLists.forEach((plist) =>
+      productoLista.selectProductList.forEach((plist) =>
         lista.push(plist)
       );
       return lista

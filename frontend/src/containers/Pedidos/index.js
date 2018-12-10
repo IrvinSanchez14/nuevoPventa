@@ -1,6 +1,5 @@
 import React from "react";
 import Radium from 'radium';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import SearchBox from '../../components/searchBox';
@@ -32,7 +31,6 @@ export class Pedidos extends React.Component {
   }
 
   render(){
-
     const product = this.props.getProducts;
     const listProducto = product.map((name) => {
       return (
