@@ -22,6 +22,18 @@ const styles = {
 }
 
 export class Pedidos extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    };
+  }
+
+  updateSearch(event) {
+    this.setState({
+      search: event.target.value.substr(0,20)
+    });
+  }
 
   selectAditional = () => {
     console.log('menu');
@@ -31,7 +43,9 @@ export class Pedidos extends React.Component {
   }
 
   render(){
-    const product = this.props.getProducts;
+    const product = this.props.getProducts.filter((product) => {
+      return product.nombre.toLowerCase().indexOf(this.state.search) !== -1 ;
+    });
     const listProducto = product.map((name) => {
       return (
         <ProductBox
@@ -39,12 +53,17 @@ export class Pedidos extends React.Component {
         style={styles.normalProduct} 
         name={name.nombre}
         price={`$${name.precio}`}
+        onClick={this.selectAditional}
       />
       );
     })
+    console.log(this.state)
     return(
       <div style={styles.head}>
-        <SearchBox />
+        <SearchBox
+          value={this.state.search}
+          onChange={this.updateSearch.bind(this)}
+        />
         <div>
         {listProducto}
         </div>

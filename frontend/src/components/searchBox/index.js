@@ -1,5 +1,6 @@
 import React from "react";
 import Radium from 'radium';
+import PropTypes from 'prop-types';
 
 import Button from '../Button';
 
@@ -31,7 +32,13 @@ export class SearchBox extends React.Component {
       <div>
         <div className="card-body row no-gutters align-items-center">
           <div className="col" >
-            <input className="form-control form-control-lg form-control-borderless" type="search" style={styles.inputSearch} />
+            <input 
+              className="form-control form-control-lg form-control-borderless" 
+              onChange={this.props.onChange} 
+              type="search" 
+              style={styles.inputSearch} 
+              value={this.props.value}
+            />
             <div style={styles.divButton}>
               <Button
                 className="btn-primary"
@@ -55,6 +62,11 @@ export class SearchBox extends React.Component {
       </div>
     );
   }
+}
+
+SearchBox.propTypes = {
+  onChange: PropTypes.func,
+  value: PropTypes.string,
 }
 
 export default Radium(SearchBox);

@@ -3,9 +3,9 @@ class Database{
  
     // specify your own database credentials
     private $host = "localhost";
-    private $db_name = "gale";
+    private $db_name = "multi2018";
     private $username = "root";
-    private $password = "";
+    private $password = "1234";
     public $conn;
  
     // get the database connection
